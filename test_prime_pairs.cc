@@ -33,7 +33,8 @@ int main(int argc, char* argv[]) {
 	vector<pthread_t> threads(kNumThreads);
 	
 	for (int i = 0; i < kNumThreads; i++) {
-		pthread_create(&threads[i], NULL, twin_primes::FindTwinPrimes, (void *)i);
+		int res = pthread_create(&threads[i], NULL, twin_primes::FindTwinPrimes, (void *)i);
+		assert(!res);
 	}
 
 	pthread_exit(NULL);
